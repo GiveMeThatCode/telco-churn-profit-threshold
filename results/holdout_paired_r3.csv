@@ -1,0 +1,49 @@
+model,tau,comparison,diff,lo,hi,excludes_0
+LR,0.1,V_i minus analytic constant,1284.6,336.9,2317.5,True
+LR,0.1,analytic constant minus empirical,-154.2,-782.7,291.5,False
+LR,0.1,analytic constant minus 0.5 rule,17194.4,13860.2,20800.6,True
+LR,0.1,analytic constant minus offer everybody,5952.3,4549.8,7209.9,True
+LR,0.2,V_i minus analytic constant,1592.0,398.9,3073.1,True
+LR,0.2,analytic constant minus empirical,279.8,-583.4,1311.5,False
+LR,0.2,analytic constant minus 0.5 rule,8941.7,5752.7,12041.6,True
+LR,0.2,analytic constant minus offer everybody,16953.1,14475.2,19041.8,True
+LR,0.3,V_i minus analytic constant,2580.4,838.8,4426.1,True
+LR,0.3,analytic constant minus empirical,713.3,-241.7,1495.4,False
+LR,0.3,analytic constant minus 0.5 rule,3568.8,1257.9,6249.5,True
+LR,0.3,analytic constant minus offer everybody,30833.8,27717.3,33903.0,True
+DT,0.1,V_i minus analytic constant,1960.5,1162.6,2891.4,True
+DT,0.1,analytic constant minus empirical,-95.0,-1429.8,1420.9,False
+DT,0.1,analytic constant minus 0.5 rule,43035.9,38079.4,48083.3,True
+DT,0.1,analytic constant minus offer everybody,3502.8,2114.0,4717.8,True
+DT,0.2,V_i minus analytic constant,2891.2,2141.5,3650.5,True
+DT,0.2,analytic constant minus empirical,-2081.6,-2557.5,-1593.6,True
+DT,0.2,analytic constant minus 0.5 rule,30572.4,25696.2,35304.5,True
+DT,0.2,analytic constant minus offer everybody,13849.7,11806.8,15932.9,True
+DT,0.3,V_i minus analytic constant,2976.7,1659.6,4304.8,True
+DT,0.3,analytic constant minus empirical,0.0,0.0,0.0,False
+DT,0.3,analytic constant minus 0.5 rule,21040.5,16316.4,25638.2,True
+DT,0.3,analytic constant minus offer everybody,27128.2,24668.9,29852.5,True
+RF,0.1,V_i minus analytic constant,689.8,-205.9,1717.4,False
+RF,0.1,analytic constant minus empirical,-72.8,-784.1,455.0,False
+RF,0.1,analytic constant minus 0.5 rule,20155.4,16542.2,24475.0,True
+RF,0.1,analytic constant minus offer everybody,6307.9,5063.6,7450.6,True
+RF,0.2,V_i minus analytic constant,3429.5,1713.5,5066.8,True
+RF,0.2,analytic constant minus empirical,-144.6,-980.3,791.8,False
+RF,0.2,analytic constant minus 0.5 rule,9561.0,6531.3,12653.5,True
+RF,0.2,analytic constant minus offer everybody,15002.1,12655.4,17444.7,True
+RF,0.3,V_i minus analytic constant,1827.0,516.3,3351.6,True
+RF,0.3,analytic constant minus empirical,-681.2,-1719.5,340.3,False
+RF,0.3,analytic constant minus 0.5 rule,5176.8,2229.1,8233.9,True
+RF,0.3,analytic constant minus offer everybody,29906.5,27074.1,32619.3,True
+GBT,0.1,V_i minus analytic constant,1032.1,-2.8,2144.9,False
+GBT,0.1,analytic constant minus empirical,-365.0,-1375.1,437.4,False
+GBT,0.1,analytic constant minus 0.5 rule,19540.1,15697.4,23484.8,True
+GBT,0.1,analytic constant minus offer everybody,5756.3,4373.0,7140.7,True
+GBT,0.2,V_i minus analytic constant,1320.4,17.0,2545.4,True
+GBT,0.2,analytic constant minus empirical,171.9,-711.1,918.8,False
+GBT,0.2,analytic constant minus 0.5 rule,10796.4,7522.1,13872.7,True
+GBT,0.2,analytic constant minus offer everybody,16592.7,14167.4,18917.3,True
+GBT,0.3,V_i minus analytic constant,2046.5,558.3,3665.7,True
+GBT,0.3,analytic constant minus empirical,130.6,-390.2,583.7,False
+GBT,0.3,analytic constant minus 0.5 rule,6084.0,3233.6,8808.7,True
+GBT,0.3,analytic constant minus offer everybody,31460.4,28505.5,34568.6,True

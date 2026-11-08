@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process version="9.10.008">
+  <context>
+    <input />
+    <output />
+    <macros>
+      <macro>
+        <key>export_dir</key>
+        <value>C:/Users/GiaHuy/Documents/RapidMiner/churn_exports</value>
+      </macro>
+    </macros>
+  </context>
+  <operator activated="true" class="process" compatibility="9.10.008" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init" />
+    <parameter key="random_seed" value="8420" />
+    <parameter key="send_mail" value="never" />
+    <parameter key="notification_email" value="" />
+    <parameter key="process_duration_for_mail" value="30" />
+    <parameter key="encoding" value="SYSTEM" />
+    <process expanded="true">
+      <operator activated="true" class="retrieve" compatibility="9.10.008" expanded="true" height="68" name="A1 Load dev data (OOF file)" width="90" x="45" y="85">
+        <parameter key="repository_entry" value="../data/telco_oof_predictions_lr_r3" />
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="9.10.008" expanded="true" height="82" name="A2 Drop old prediction and confidence columns" width="90" x="246" y="85">
+        <parameter key="attribute_filter_type" value="subset" />
+        <parameter key="attribute" value="" />
+        <parameter key="attributes" value="prediction(Churn)|confidence(Yes)|confidence(No)" />
+        <parameter key="use_except_expression" value="false" />
+        <parameter key="value_type" value="attribute_value" />
+        <parameter key="use_value_type_exception" value="false" />
+        <parameter key="except_value_type" value="time" />
+        <parameter key="block_type" value="attribute_block" />
+        <parameter key="use_block_type_exception" value="false" />
+        <parameter key="except_block_type" value="value_matrix_row_start" />
+        <parameter key="invert_selection" value="true" />
+        <parameter key="include_special_attributes" value="true" />
+      </operator>
+      <operator activated="true" class="h2o:logistic_regression" compatibility="9.10.001" expanded="true" height="124" name="B1 Final model on full dev - Model - Logistic Regression" width="90" x="450" y="85">
+            <parameter key="solver" value="AUTO" />
+            <parameter key="reproducible" value="false" />
+            <parameter key="maximum_number_of_threads" value="4" />
+            <parameter key="use_regularization" value="false" />
+            <parameter key="lambda_search" value="false" />
+            <parameter key="number_of_lambdas" value="0" />
+            <parameter key="lambda_min_ratio" value="0.0" />
+            <parameter key="early_stopping" value="true" />
+            <parameter key="stopping_rounds" value="3" />
+            <parameter key="stopping_tolerance" value="0.001" />
+            <parameter key="standardize" value="true" />
+            <parameter key="non-negative_coefficients" value="false" />
+            <parameter key="add_intercept" value="true" />
+            <parameter key="compute_p-values" value="true" />
+            <parameter key="remove_collinear_columns" value="true" />
+            <parameter key="missing_values_handling" value="MeanImputation" />
+            <parameter key="max_iterations" value="0" />
+            <parameter key="max_runtime_seconds" value="0" />
+          </operator>
+      <operator activated="true" class="retrieve" compatibility="9.10.008" expanded="true" height="68" name="C1 Load 30pct holdout (use once)" width="90" x="450" y="289">
+        <parameter key="repository_entry" value="../data/telco_holdout_30pct_r3" />
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.10.008" expanded="true" height="82" name="C1 Score holdout with final model" width="90" x="650" y="289">
+        <list key="application_parameters" />
+        <parameter key="create_view" value="false" />
+      </operator>
+      <operator activated="true" class="multiply" compatibility="9.10.008" expanded="true" height="103" name="C1 Split scored holdout" width="90" x="800" y="289" />
+      <operator activated="true" class="performance_binominal_classification" compatibility="9.10.008" expanded="true" height="82" name="C2 Holdout accuracy and AUC (check only)" width="90" x="650" y="187">
+        <parameter key="manually_set_positive_class" value="true" />
+        <parameter key="positive_class" value="Yes" />
+        <parameter key="main_criterion" value="first" />
+        <parameter key="accuracy" value="true" />
+        <parameter key="classification_error" value="false" />
+        <parameter key="kappa" value="false" />
+        <parameter key="AUC (optimistic)" value="false" />
+        <parameter key="AUC" value="true" />
+        <parameter key="AUC (pessimistic)" value="false" />
+        <parameter key="precision" value="false" />
+        <parameter key="recall" value="false" />
+        <parameter key="lift" value="false" />
+        <parameter key="fallout" value="false" />
+        <parameter key="f_measure" value="false" />
+        <parameter key="false_positive" value="false" />
+        <parameter key="false_negative" value="false" />
+        <parameter key="true_positive" value="false" />
+        <parameter key="true_negative" value="false" />
+        <parameter key="sensitivity" value="false" />
+        <parameter key="specificity" value="false" />
+        <parameter key="youden" value="false" />
+        <parameter key="positive_predictive_value" value="false" />
+        <parameter key="negative_predictive_value" value="false" />
+        <parameter key="psep" value="false" />
+        <parameter key="skip_undefined_labels" value="true" />
+        <parameter key="use_example_weights" value="true" />
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="9.10.008" expanded="true" height="82" name="D1 Add c and y" width="90" x="950" y="391">
+        <list key="function_descriptions">
+          <parameter key="c" value="min(max([confidence(Yes)],0.001),0.999)" />
+          <parameter key="y" value="if([Churn]==&quot;Yes&quot;,1,0)" />
+        </list>
+        <parameter key="keep_all" value="true" />
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="9.10.008" expanded="true" height="82" name="D1 Keep id y c MonthlyCharges" width="90" x="1100" y="391">
+        <parameter key="attribute_filter_type" value="subset" />
+        <parameter key="attribute" value="" />
+        <parameter key="attributes" value="customerID|y|c|MonthlyCharges" />
+        <parameter key="use_except_expression" value="false" />
+        <parameter key="value_type" value="attribute_value" />
+        <parameter key="use_value_type_exception" value="false" />
+        <parameter key="except_value_type" value="time" />
+        <parameter key="block_type" value="attribute_block" />
+        <parameter key="use_block_type_exception" value="false" />
+        <parameter key="except_block_type" value="value_matrix_row_start" />
+        <parameter key="invert_selection" value="false" />
+        <parameter key="include_special_attributes" value="true" />
+      </operator>
+      <operator activated="true" class="write_csv" compatibility="9.10.008" expanded="true" height="82" name="D1 Export holdout per-customer CSV" width="90" x="1250" y="391">
+        <parameter key="csv_file" value="%{export_dir}/final_holdout_lr_r3_per_customer.csv" />
+        <parameter key="column_separator" value="," />
+        <parameter key="write_attribute_names" value="true" />
+        <parameter key="quote_nominal_values" value="true" />
+        <parameter key="format_date_attributes" value="false" />
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss" />
+        <parameter key="append_to_file" value="false" />
+        <parameter key="encoding" value="SYSTEM" />
+      </operator>
+      <connect from_op="A1 Load dev data (OOF file)" from_port="output" to_op="A2 Drop old prediction and confidence columns" to_port="example set input" />
+      <connect from_op="A2 Drop old prediction and confidence columns" from_port="example set output" to_op="B1 Final model on full dev - Model - Logistic Regression" to_port="training set" />
+      <connect from_op="B1 Final model on full dev - Model - Logistic Regression" from_port="model" to_op="C1 Score holdout with final model" to_port="model" />
+      <connect from_op="C1 Load 30pct holdout (use once)" from_port="output" to_op="C1 Score holdout with final model" to_port="unlabelled data" />
+      <connect from_op="C1 Score holdout with final model" from_port="labelled data" to_op="C1 Split scored holdout" to_port="input" />
+      <connect from_op="C1 Split scored holdout" from_port="output 1" to_op="C2 Holdout accuracy and AUC (check only)" to_port="labelled data" />
+      <connect from_op="C1 Split scored holdout" from_port="output 2" to_op="D1 Add c and y" to_port="example set input" />
+      <connect from_op="C2 Holdout accuracy and AUC (check only)" from_port="performance" to_port="result 1" />
+      <connect from_op="D1 Add c and y" from_port="example set output" to_op="D1 Keep id y c MonthlyCharges" to_port="example set input" />
+      <connect from_op="D1 Keep id y c MonthlyCharges" from_port="example set output" to_op="D1 Export holdout per-customer CSV" to_port="input" />
+      <connect from_op="D1 Export holdout per-customer CSV" from_port="through" to_port="result 2" />
+      <portSpacing port="source_input 1" spacing="0" />
+      <portSpacing port="sink_result 1" spacing="0" />
+      <portSpacing port="sink_result 2" spacing="0" />
+      <portSpacing port="sink_result 3" spacing="0" />
+    </process>
+  </operator>
+</process>
