@@ -35,7 +35,7 @@ The analysis uses the original IBM Telco customer churn sample on Kaggle: https:
 
 ## Reproducing
 
-The scripts read per-customer prediction files exported from RapidMiner. Those files are not shared (see Data), and the scripts have the author's folder paths written into them. They document the analysis, but they cannot be rerun from this repository alone. The result tables in `results/` are the exact outputs reported in the paper.
+The scripts read per-customer prediction files exported from RapidMiner. Those files are not shared (see Data), and the scripts have the author's folder paths written into them. They document the analysis, but they cannot be rerun from this repository alone. Each script expects an exports/ folder with subfolders R1, R2 and R3 (or a path passed as an argument), for example python holdout_analysis.py r1 exports, python dt_binning.py exports and python band.py exports. The result tables in results/ are the exact outputs reported in the paper.
 
 Versions of the final rerun, which reproduced every reported table exactly: Python 3.14.7; NumPy 2.5.4; pandas 3.0.6; scikit-learn 1.9.1; SciPy 1.18.1.
 
