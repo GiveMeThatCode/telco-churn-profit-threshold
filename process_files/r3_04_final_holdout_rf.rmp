@@ -6,7 +6,7 @@
     <macros>
       <macro>
         <key>export_dir</key>
-        <value>C:/Users/GiaHuy/Documents/RapidMiner/churn_exports</value>
+        <value>exports</value>
       </macro>
     </macros>
   </context>
