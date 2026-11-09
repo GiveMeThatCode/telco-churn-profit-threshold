@@ -41,7 +41,7 @@ Either build that layout, or point each operator to your own tables:
 **2. Output folder (the Write CSV operator, D1).**
 The output file is `%{export_dir}/final_holdout_dt_r1_per_customer.csv`. `%{export_dir}` is a macro defined once in the process context, so you change it in one place:
 1. Open the **Context** panel (View, Show Panel, Context).
-2. In the **Macros** list, edit the value of `export_dir` and set it to a folder you own, for example a new `exports` folder.
+2. In the Macros list, edit the value of export_dir. The shared files ship with the value exports; set it to a full path of a folder you own, for example C:/Users/yourname/Documents/exports or /home/yourname/exports.
 3. Leave the file name alone, so the scripts can find the file.
 
 **Do not point `export_dir` at a folder that already holds exports.** Write CSV has "append to file" switched off, so running the process overwrites the file with the same name.
