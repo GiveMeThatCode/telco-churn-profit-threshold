@@ -1,6 +1,6 @@
 # Telco churn: a profit-based decision threshold
 
-Code, process files and result tables for the paper "A profit-based decision threshold for telecom churn retention offers: an analytic rule compared with a tuned threshold and with customer-specific value" (Nguyen Van Hong Hau, Khuong Gia Huy, Nguyen Hao Nam, Do Ho Hung Phong, Tran Dinh Son and Nguyen The Vu, University of Economics and Law, 2026).
+Code, process files and result tables for the paper "A profit-based decision threshold for telecom churn retention offers: an analytic rule compared with a tuned threshold and with customer-specific value" (Khương Gia Huy, Nguyễn Văn Hồng Hậu, Nguyễn Hào Nam, Đỗ Hồ Hùng Phong, Trần Đình Sơn, Nguyễn Thế Vũ and Thon-Da Nguyen, University of Economics and Law, 2026).
 
 The study asks whether the rule "contact a customer if the calibrated churn probability exceeds c/(a·V)" earns as much on a holdout as a threshold tuned on development data, and whether letting V vary with the customer's monthly charge helps. All profits are simulated from assumed parameters (a = 0.3, H = 6 months). They are not real campaign results.
 
@@ -12,8 +12,8 @@ The analysis uses the original IBM Telco customer churn sample on Kaggle: https:
 
 | Path | What it is |
 |---|---|
-| `protocol.txt` | The analysis protocol, with dated notes for every change made after the holdout was opened. |
-| `process_files/` | The twelve RapidMiner Studio 9.10.008 processes that refit the final models and score the holdout (`r1_04_final_holdout_lr.rmp` and so on for DT, RF, GBT and runs 1 to 3). with instructions.md explaining how they work and which paths to chang |
+| `protocol.md` | The analysis protocol, with a dated list of amendments made after the holdout was opened. |
+| `process_files/` | The twelve RapidMiner Studio 9.10.008 processes that refit the final models and score the holdout (`r1_04_final_holdout_lr.rmp` and so on for DT, RF, GBT and runs 1 to 3), with `instructions.md` explaining how they work and which paths to change. |
 | `scripts/holdout_analysis.py` | Platt scaling, the seven rules, holdout profit and the paired bootstrap, per run. |
 | `scripts/dt_binning.py` | Decision tree sensitivity analysis with histogram binning. |
 | `scripts/band.py` | Development near-optimal threshold band and development Brier scores. |
@@ -35,10 +35,10 @@ The analysis uses the original IBM Telco customer churn sample on Kaggle: https:
 
 ## Reproducing
 
-The scripts read per-customer prediction files exported from RapidMiner. Those files are not shared (see Data), and the scripts have the author's folder paths written into them. They document the analysis, but they cannot be rerun from this repository alone. Each script expects an exports/ folder with subfolders R1, R2 and R3 (or a path passed as an argument), for example python holdout_analysis.py r1 exports, python dt_binning.py exports and python band.py exports. The result tables in results/ are the exact outputs reported in the paper.
+The scripts read per-customer prediction files exported from RapidMiner. Those files are not shared (see Data), so the scripts document the analysis but cannot be rerun from this repository alone. Each script expects an `exports/` folder with subfolders `R1`, `R2` and `R3` (or a path passed as an argument), for example `python holdout_analysis.py r1 exports`, `python dt_binning.py exports` and `python band.py exports`. The result tables in `results/` are the exact outputs reported in the paper.
 
 Versions of the final rerun, which reproduced every reported table exactly: Python 3.14.7; NumPy 2.5.4; pandas 3.0.6; scikit-learn 1.9.1; SciPy 1.18.1.
 
 ## Citation
 
-Nguyen Van Hong Hau, Khuong Gia Huy, Nguyen Hao Nam, Do Ho Hung Phong, Tran Dinh Son and Nguyen The Vu. A profit-based decision threshold for telecom churn retention offers. Repository commit: https://github.com/GiveMeThatCode/telco-churn-profit-threshold.
+Khương Gia Huy, Nguyễn Văn Hồng Hậu, Nguyễn Hào Nam, Đỗ Hồ Hùng Phong, Trần Đình Sơn, Nguyễn Thế Vũ and Thon-Da Nguyen. A profit-based decision threshold for telecom churn retention offers. Repository version: the commit cited in the paper.
