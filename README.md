@@ -13,7 +13,7 @@ The analysis uses the original IBM Telco customer churn sample on Kaggle: https:
 | Path | What it is |
 |---|---|
 | `protocol.txt` | The analysis protocol, with dated notes for every change made after the holdout was opened. |
-| `process_files/` | The twelve RapidMiner Studio 9.10.008 processes that refit the final models and score the holdout (`r1_04_final_holdout_lr.rmp` and so on for DT, RF, GBT and runs 1 to 3). |
+| `process_files/` | The twelve RapidMiner Studio 9.10.008 processes that refit the final models and score the holdout (`r1_04_final_holdout_lr.rmp` and so on for DT, RF, GBT and runs 1 to 3). with instructions.md explaining how they work and which paths to chang |
 | `scripts/holdout_analysis.py` | Platt scaling, the seven rules, holdout profit and the paired bootstrap, per run. |
 | `scripts/dt_binning.py` | Decision tree sensitivity analysis with histogram binning. |
 | `scripts/band.py` | Development near-optimal threshold band and development Brier scores. |
