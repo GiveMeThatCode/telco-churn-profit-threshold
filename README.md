@@ -18,7 +18,7 @@ The analysis uses the original IBM Telco customer churn sample on Kaggle: https:
 | `scripts/dt_binning.py` | Decision tree sensitivity analysis with histogram binning. |
 | `scripts/band.py` | Development near-optimal threshold band and development Brier scores. |
 | `scripts/aggregate.py` | Averages the result tables over the three runs. |
-|- `scripts/plot_reliability.py`| Draws Fig. 2 (reliability of raw development out-of-fold scores) from the twelve `results/calib_fit_*_reliability.csv` files.|
+| `scripts/plot_reliability.py`| Draws Fig. 2 (reliability of raw development out-of-fold scores) from the twelve `results/calib_fit_*_reliability.csv` files.|
 | `results/` | `holdout_rules_r1..r3.csv`, `holdout_paired_r1..r3.csv`, `dt_binning_sensitivity.csv` (DT binning table), `band_output.txt` (output of `band.py`: near-optimal band counts and development Brier scores), and the aggregated reliability and Brier files. |
 
 ## Design in brief
