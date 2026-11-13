@@ -40,6 +40,10 @@ The scripts read per-customer prediction files exported from RapidMiner. Those f
 
 Versions of the final rerun, which reproduced every reported table exactly: Python 3.14.7; NumPy 2.5.4; pandas 3.0.6; scikit-learn 1.9.1; SciPy 1.18.1.
 
+## Acknowledgements
+
+The Python scripts in `scripts/` were written with the help of Claude (Anthropic) and run and checked by the authors. See the Declaration of generative AI use in the paper.
+
 ## Citation
 
 Khương Gia Huy, Nguyễn Văn Hồng Hậu, Nguyễn Hào Nam, Đỗ Hồ Hùng Phong, Trần Đình Sơn, Nguyễn Thế Vũ and Thon-Da Nguyen. A profit-based decision threshold for telecom churn retention offers. Repository version: the commit cited in the paper.
